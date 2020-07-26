@@ -18,7 +18,7 @@ class RssContent {
 
   factory RssContent.parse(XmlElement element) {
     if (element == null) {
-      return null;
+      return RssContent('', ['']);
     }
     final content = element.text;
     final images = <String>[];
