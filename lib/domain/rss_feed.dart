@@ -59,7 +59,7 @@ class RssFeed {
   });
 
   factory RssFeed.parse(String xmlString) {
-    var document = parse(xmlString);
+    var document = XmlDocument.parse(xmlString);
     XmlElement channelElement;
     try {
       channelElement = document.findAllElements("channel").first;
@@ -68,40 +68,41 @@ class RssFeed {
     }
 
     return RssFeed(
-      title: findElementOrNull(channelElement, "title")?.text,
-      author: findElementOrNull(channelElement, "author")?.text,
-      description: findElementOrNull(channelElement, "description")?.text,
-      link: findElementOrNull(channelElement, "link")?.text,
+      title: findElementOrNull(channelElement, "title")?.text?.trim(),
+      author: findElementOrNull(channelElement, "author")?.text?.trim(),
+      description:
+          findElementOrNull(channelElement, "description")?.text?.trim(),
+      link: findElementOrNull(channelElement, "link")?.text?.trim(),
       items: channelElement.findElements("item").map((element) {
         return RssItem.parse(element);
       }).toList(),
       image: RssImage.parse(findElementOrNull(channelElement, "image")),
-      cloud: RssCloud.parse(findElementOrNull(channelElement, "cloud")),
-      categories: channelElement.findElements("category").map((element) {
-        return RssCategory.parse(element);
-      }).toList(),
-      skipDays: findElementOrNull(channelElement, "skipDays")
-              ?.findAllElements("day")
-              ?.map((element) {
-            return element.text;
-          })?.toList() ??
-          [],
-      skipHours: findElementOrNull(channelElement, "skipHours")
-              ?.findAllElements("hour")
-              ?.map((element) {
-            return int.tryParse(element.text ?? "0");
-          })?.toList() ??
-          [],
-      lastBuildDate: findElementOrNull(channelElement, "lastBuildDate")?.text,
+      //cloud: RssCloud.parse(findElementOrNull(channelElement, "cloud")),
+      //categories: channelElement.findElements("category").map((element) {
+      //  return RssCategory.parse(element);
+      //}).toList(),
+      // skipDays: findElementOrNull(channelElement, "skipDays")
+      //         ?.findAllElements("day")
+      //         ?.map((element) {
+      //       return element.text;
+      //     })?.toList() ??
+      //     [],
+      // skipHours: findElementOrNull(channelElement, "skipHours")
+      //         ?.findAllElements("hour")
+      //         ?.map((element) {
+      //       return int.tryParse(element.text ?? "0");
+      //     })?.toList() ??
+      //     [],
+      // lastBuildDate: findElementOrNull(channelElement, "lastBuildDate")?.text,
       language: findElementOrNull(channelElement, "language")?.text,
       generator: findElementOrNull(channelElement, "generator")?.text,
-      copyright: findElementOrNull(channelElement, "copyright")?.text,
-      docs: findElementOrNull(channelElement, "docs")?.text,
-      managingEditor: findElementOrNull(channelElement, "managingEditor")?.text,
-      rating: findElementOrNull(channelElement, "rating")?.text,
-      webMaster: findElementOrNull(channelElement, "webMaster")?.text,
-      ttl: int.tryParse(findElementOrNull(channelElement, "ttl")?.text ?? "0"),
-      dc: DublinCore.parse(channelElement),
+      // copyright: findElementOrNull(channelElement, "copyright")?.text,
+      // docs: findElementOrNull(channelElement, "docs")?.text,
+      // managingEditor: findElementOrNull(channelElement, "managingEditor")?.text,
+      // rating: findElementOrNull(channelElement, "rating")?.text,
+      // webMaster: findElementOrNull(channelElement, "webMaster")?.text,
+      // ttl: int.tryParse(findElementOrNull(channelElement, "ttl")?.text ?? "0"),
+      // dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
     );
   }

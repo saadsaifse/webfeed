@@ -48,18 +48,18 @@ class RssItem {
       title: findElementOrNull(element, "title")?.text,
       description: findElementOrNull(element, "description")?.text,
       link: findElementOrNull(element, "link")?.text,
-      categories: element.findElements("category").map((element) {
-        return RssCategory.parse(element);
-      }).toList(),
-      guid: findElementOrNull(element, "guid")?.text,
+      //  categories: element.findElements("category").map((element) {
+      //    return RssCategory.parse(element);
+      //  }).toList(),
+      //  guid: findElementOrNull(element, "guid")?.text,
       pubDate: findElementOrNull(element, "pubDate")?.text,
       author: findElementOrNull(element, "author")?.text,
-      comments: findElementOrNull(element, "comments")?.text,
-      source: RssSource.parse(findElementOrNull(element, "source")),
+      // comments: findElementOrNull(element, "comments")?.text,
+      // source: RssSource.parse(findElementOrNull(element, "source")),
       content: RssContent.parse(findElementOrNull(element, "content:encoded")),
-      media: Media.parse(element),
+      //  media: Media.parse(element),
       enclosure: RssEnclosure.parse(findElementOrNull(element, "enclosure")),
-      dc: DublinCore.parse(element),
+      // dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
     );
   }
