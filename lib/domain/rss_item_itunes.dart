@@ -40,14 +40,14 @@ class RssItemItunes {
     if (element == null) {
       return null;
     }
-    var episodeStr = findElementOrNull(element, "itunes:episode")?.text?.trim();
+    //var episodeStr = findElementOrNull(element, "itunes:episode")?.text?.trim();
     // var seasonStr = findElementOrNull(element, "itunes:season")?.text?.trim();
     var durationStr =
         findElementOrNull(element, "itunes:duration")?.text?.trim();
 
     return RssItemItunes(
       title: findElementOrNull(element, "itunes:title")?.text?.trim(),
-      episode: episodeStr == null ? null : int.parse(episodeStr),
+      //episode: episodeStr == null ? null : int.parse(episodeStr),
       // season: seasonStr == null ? null : int.parse(seasonStr),
       duration: durationStr == null ? null : parseDuration(durationStr),
       episodeType: newRssItunesEpisodeType(
@@ -75,12 +75,24 @@ Duration parseDuration(String s) {
   var seconds = 0;
   var parts = s.split(':');
   if (parts.length > 2) {
-    hours = int.parse(parts[parts.length - 3]);
+    try {
+      hours = int.parse(parts[parts.length - 3]);
+    } catch (e) {
+      print(e);
+    }
   }
   if (parts.length > 1) {
-    minutes = int.parse(parts[parts.length - 2]);
+    try {
+      minutes = int.parse(parts[parts.length - 2]);
+    } catch (e) {
+      print(e);
+    }
   }
-  seconds = int.parse(parts[parts.length - 1]);
+  try {
+    seconds = int.parse(parts[parts.length - 1]);
+  } catch (e) {
+    print(e);
+  }
   return Duration(
     hours: hours,
     minutes: minutes,
