@@ -69,13 +69,13 @@ class RssFeed {
 
     return RssFeed(
       title: findElementOrNull(channelElement, "title")?.text?.trim(),
-      author: findElementOrNull(channelElement, "author")?.text?.trim(),
+      author: findElementOrNull(channelElement, "author")?.text?.trim() ?? '',
       description:
           findElementOrNull(channelElement, "description")?.text?.trim(),
       link: findElementOrNull(channelElement, "link")?.text?.trim(),
-      items: channelElement.findElements("item").map((element) {
+      items: channelElement.findElements("item")?.map((element) {
         return RssItem.parse(element);
-      }).toList(),
+      })?.toList(),
       image: RssImage.parse(findElementOrNull(channelElement, "image")),
       //cloud: RssCloud.parse(findElementOrNull(channelElement, "cloud")),
       //categories: channelElement.findElements("category").map((element) {
@@ -102,7 +102,7 @@ class RssFeed {
       // rating: findElementOrNull(channelElement, "rating")?.text,
       // webMaster: findElementOrNull(channelElement, "webMaster")?.text,
       // ttl: int.tryParse(findElementOrNull(channelElement, "ttl")?.text ?? "0"),
-      // dc: DublinCore.parse(channelElement),
+      dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
     );
   }
