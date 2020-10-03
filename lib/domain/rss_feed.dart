@@ -69,7 +69,7 @@ class RssFeed {
 
     return RssFeed(
       title: findElementOrNull(channelElement, "title")?.text?.trim(),
-      author: findElementOrNull(channelElement, "author")?.text?.trim() ?? '',
+      author: findElementOrNull(channelElement, "author")?.text?.trim(),
       description:
           findElementOrNull(channelElement, "description")?.text?.trim(),
       link: findElementOrNull(channelElement, "link")?.text?.trim(),
