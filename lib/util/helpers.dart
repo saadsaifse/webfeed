@@ -16,7 +16,7 @@ List<XmlElement> findAllDirectElementsOrNull(XmlElement element, String name,
   try {
     return element.findElements(name, namespace: namespace).toList();
   } on StateError {
-    return null;
+    return [];
   }
 }
 
