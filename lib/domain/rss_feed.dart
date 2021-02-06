@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/podcast_funding.dart';
+import 'package:webfeed/domain/podcast_location.dart';
 import 'package:webfeed/domain/podcast_lock.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_cloud.dart';
@@ -11,8 +12,7 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 import '../util/helpers.dart';
-import '../util/helpers.dart';
-import '../util/helpers.dart';
+import 'podcast_person.dart';
 import 'rss_itunes.dart';
 
 class RssFeed {
@@ -40,6 +40,8 @@ class RssFeed {
   final RssItunes itunes;
   final List<PodcastFunding> podcastFunding;
   final PodcastLocked podcastLocked;
+  final List<PodcastPerson> podcastPerson;
+  final PodcastLocation podcastLocation;
 
   RssFeed(
       {this.title,
@@ -64,7 +66,9 @@ class RssFeed {
       this.dc,
       this.itunes,
       this.podcastFunding,
-      this.podcastLocked});
+      this.podcastLocked,
+      this.podcastPerson,
+      this.podcastLocation});
 
   factory RssFeed.parse(String xmlString) {
     var document = XmlDocument.parse(xmlString);
@@ -117,6 +121,12 @@ class RssFeed {
                 .map((element) => PodcastFunding.parse(element))
                 .toList(),
         podcastLocked: PodcastLocked.parse(
-            findElementOrNull(channelElement, "podcast:locked")));
+            findElementOrNull(channelElement, "podcast:locked")),
+        podcastPerson:
+            findAllDirectElementsOrNull(channelElement, "podcast:person")
+                .map((element) => PodcastPerson.parse(element))
+                .toList(),
+        podcastLocation: PodcastLocation.parse(
+            findElementOrNull(channelElement, "podcast:location")));
   }
 }

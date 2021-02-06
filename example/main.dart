@@ -32,6 +32,8 @@ void main() {
     print(channel.podcastFunding.first.info);
     print(channel.items.first.podcastTranscript.first.url);
     print(channel.items.first.podcastChapters.url);
+    print(channel.podcastLocation);
+    print(channel.podcastPerson);
     return channel;
   });
 }
