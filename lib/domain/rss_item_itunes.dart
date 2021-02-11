@@ -61,8 +61,7 @@ class RssItemItunes {
           ?.split(",")
           ?.map((keyword) => keyword.trim())
           ?.toList(),
-      image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")) ??
-          '',
+      image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")) ?? RssItunesImage(href: ''),
       category: RssItunesCategory.parse(
           findElementOrNull(element, "itunes:category")),
       block: parseBoolLiteral(element, "itunes:block"),
