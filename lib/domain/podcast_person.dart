@@ -13,7 +13,7 @@ class PodcastPerson {
     if (element == null) {
       return null;
     }
-    var name = element.text.trim() ?? '';
+    var name = element.text?.trim() ?? '';
     var role = element.getAttribute("role")?.trim() ?? "";
     var group = element.getAttribute("group")?.trim() ?? "";
     var image = element.getAttribute("image")?.trim() ?? "";

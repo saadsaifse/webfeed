@@ -10,8 +10,8 @@ class PodcastFunding{
     if (element == null) {
       return null;
     }
-    var url= element.getAttribute("url").trim() ?? "";
-    var info = element.text.trim().trim() ?? "";
+    var url= element.getAttribute("url")?.trim() ?? "";
+    var info = element.text?.trim() ?? "";
 
     return PodcastFunding(info, url);
   }

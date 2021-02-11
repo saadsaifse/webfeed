@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:webfeed/webfeed.dart';
 
-const url = "http://mp3s.nashownotes.com/pc20rss.xml";
+const url = "https://feeds.fireside.fm/lushu/rss";
 void main() {
   var client = new http.Client();
 
@@ -29,11 +29,12 @@ void main() {
     return response.body;
   }).then((bodyString) {
     var channel = new RssFeed.parse(bodyString);
-    print(channel.podcastFunding.first.info);
-    print(channel.items.first.podcastTranscript.first.url);
-    print(channel.items.first.podcastChapters.url);
-    print(channel.podcastLocation);
-    print(channel.podcastPerson);
+    print(channel.author);
+    // print(channel.podcastFunding.first.info);
+    // print(channel.items.first.podcastTranscript.first.url);
+    // print(channel.items.first.podcastChapters.url);
+    // print(channel.podcastLocation);
+    // print(channel.podcastPerson);
     return channel;
   });
 }

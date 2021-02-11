@@ -10,7 +10,7 @@ class PodcastLocked{
     if (element == null) {
       return null;
     }
-    var owner = element.getAttribute("owner").trim() ?? "";
+    var owner = element.getAttribute("owner")?.trim() ?? "";
     var locked = element.text != null && element.text == "yes";
 
     return PodcastLocked(owner, locked);
