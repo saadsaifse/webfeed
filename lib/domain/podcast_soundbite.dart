@@ -11,8 +11,8 @@ class PodcastSoundbite{
       if (element == null) {
       return null;
     }
-    var startTime = double.parse(element.getAttribute("startTime"), (error) => 0.0);
-    var duration = double.parse(element.getAttribute("duration"), (error) => 0.0);
+    var startTime = double.parse(element.getAttribute("startTime"));
+    var duration = double.parse(element.getAttribute("duration"));
     var info = element.text ?? "";
 
     return PodcastSoundbite(startTime, duration, info);
