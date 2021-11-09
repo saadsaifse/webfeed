@@ -2,14 +2,14 @@ import 'package:xml/xml.dart';
 
 class PodcastPerson {
   final String name;
-  final String role;
-  final String group;
-  final String image;
-  final String href;
+  final String? role;
+  final String? group;
+  final String? image;
+  final String? href;
 
   PodcastPerson(this.name, {this.role, this.group, this.image, this.href});
 
-  factory PodcastPerson.parse(XmlElement element) {
+  static PodcastPerson? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

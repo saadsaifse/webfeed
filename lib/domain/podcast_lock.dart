@@ -6,12 +6,12 @@ class PodcastLocked{
 
   PodcastLocked(this.owner, this.locked);
 
-  factory PodcastLocked.parse(XmlElement element) {
+  static PodcastLocked? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
     var owner = element.getAttribute("owner")?.trim() ?? "";
-    var locked = element.text != null && element.text == "yes";
+    var locked = element.text == "yes";
 
     return PodcastLocked(owner, locked);
   }

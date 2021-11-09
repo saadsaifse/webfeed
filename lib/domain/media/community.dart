@@ -5,9 +5,9 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class Community {
-  final StarRating starRating;
-  final Statistics statistics;
-  final Tags tags;
+  final StarRating? starRating;
+  final Statistics? statistics;
+  final Tags? tags;
 
   Community({
     this.starRating,
@@ -15,18 +15,18 @@ class Community {
     this.tags,
   });
 
-  factory Community.parse(XmlElement element) {
+  static Community? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
     return new Community(
-      starRating: new StarRating.parse(
-        findElementOrNull(element, "media:starRating"),
+      starRating: StarRating.parse(
+        findElementOrNull(element, "media:starRating")!,
       ),
-      statistics: new Statistics.parse(
-        findElementOrNull(element, "media:statistics"),
+      statistics: Statistics.parse(
+        findElementOrNull(element, "media:statistics")!,
       ),
-      tags: new Tags.parse(
+      tags: Tags.parse(
         findElementOrNull(element, "media:tags"),
       ),
     );

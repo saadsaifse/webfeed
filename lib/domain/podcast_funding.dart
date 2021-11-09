@@ -1,16 +1,16 @@
 import 'package:xml/xml.dart';
 
-class PodcastFunding{
+class PodcastFunding {
   final String info;
   final String url;
 
   PodcastFunding(this.info, this.url);
 
-  factory PodcastFunding.parse(XmlElement element) {
+  static PodcastFunding? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
-    var url= element.getAttribute("url")?.trim() ?? "";
+    var url = element.getAttribute("url")?.trim() ?? "";
     var info = element.text?.trim() ?? "";
 
     return PodcastFunding(info, url);

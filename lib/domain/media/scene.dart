@@ -2,10 +2,10 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class Scene {
-  final String title;
-  final String description;
-  final String startTime;
-  final String endTime;
+  final String? title;
+  final String? description;
+  final String? startTime;
+  final String? endTime;
 
   Scene({
     this.title,
@@ -14,7 +14,7 @@ class Scene {
     this.endTime,
   });
 
-  factory Scene.parse(XmlElement element) {
+  static Scene? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

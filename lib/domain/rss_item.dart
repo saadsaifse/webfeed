@@ -16,26 +16,26 @@ import '../util/helpers.dart';
 import 'rss_item_itunes.dart';
 
 class RssItem {
-  final String title;
-  final String description;
-  final String link;
+  final String? title;
+  final String? description;
+  final String? link;
 
-  final List<RssCategory> categories;
-  final String guid;
-  final String pubDate;
-  final String author;
-  final String comments;
-  final RssSource source;
-  final RssContent content;
-  final Media media;
-  final RssEnclosure enclosure;
-  final DublinCore dc;
-  final RssItemItunes itunes;
-  final PodcastChapters podcastChapters;
-  final List<PodcastSoundbite> podcastSoundbite;
-  final List<PodcastTranscript> podcastTranscript;
-  final List<PodcastPerson> podcastPerson;
-  final PodcastLocation podcastLocation;
+  final List<RssCategory>? categories;
+  final String? guid;
+  final String? pubDate;
+  final String? author;
+  final String? comments;
+  final RssSource? source;
+  final RssContent? content;
+  final Media? media;
+  final RssEnclosure? enclosure;
+  final DublinCore? dc;
+  final RssItemItunes? itunes;
+  final PodcastChapters? podcastChapters;
+  final List<PodcastSoundbite?>? podcastSoundbite;
+  final List<PodcastTranscript?>? podcastTranscript;
+  final List<PodcastPerson?>? podcastPerson;
+  final PodcastLocation? podcastLocation;
 
   RssItem(
       {this.title,
@@ -80,15 +80,15 @@ class RssItem {
         podcastChapters: PodcastChapters.parse(
             findElementOrNull(element, "podcast:chapters")),
         podcastSoundbite:
-            findAllDirectElementsOrNull(element, "podcast:soundbite")
+            findAllDirectElementsOrNull(element, "podcast:soundbite")!
                 .map((element) => PodcastSoundbite.parse(element))
                 .toList(),
         podcastTranscript:
             findAllDirectElementsOrNull(element, "podcast:transcript")
-                .map((element) => PodcastTranscript.parse(element))
+                !.map((element) => PodcastTranscript.parse(element))
                 .toList(),
         podcastPerson: findAllDirectElementsOrNull(element, "podcast:person")
-            .map((element) => PodcastPerson.parse(element))
+            !.map((element) => PodcastPerson.parse(element))
             .toList(),
         podcastLocation: PodcastLocation.parse(
             findElementOrNull(element, "podcast:location")));

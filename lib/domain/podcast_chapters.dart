@@ -1,13 +1,13 @@
 import 'package:xml/xml.dart';
 
-class PodcastChapters{
+class PodcastChapters {
   final String url;
   final String type;
 
   PodcastChapters(this.url, this.type);
 
-  factory PodcastChapters.parse(XmlElement element){
-      if (element == null) {
+  static PodcastChapters? parse(XmlElement? element) {
+    if (element == null) {
       return null;
     }
     var url = element.getAttribute("url")?.trim() ?? "";

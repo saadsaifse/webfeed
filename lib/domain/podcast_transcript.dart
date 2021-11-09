@@ -6,7 +6,7 @@ class PodcastTranscript{
 
   PodcastTranscript(this.url, this.type);
 
-  factory PodcastTranscript.parse(XmlElement element){
+  static PodcastTranscript? parse(XmlElement? element){
       if (element == null) {
       return null;
     }

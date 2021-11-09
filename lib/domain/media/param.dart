@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class Param {
-  final String name;
-  final String value;
+  final String? name;
+  final String? value;
 
   Param({
     this.name,
     this.value,
   });
 
-  factory Param.parse(XmlElement element) {
+  static Param? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }

@@ -25,7 +25,7 @@ void main() {
   //  return feed;
   //});
 
-  client.get(url).then((response) {
+  client.get(Uri.parse(url)).then((response) {
     return response.body;
   }).then((bodyString) {
     var channel = new RssFeed.parse(bodyString);

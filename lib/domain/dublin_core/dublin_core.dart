@@ -2,21 +2,21 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class DublinCore {
-  final String title;
-  final String description;
-  final String creator;
-  final String subject;
-  final String publisher;
-  final String contributor;
-  final String date;
-  final String type;
-  final String format;
-  final String identifier;
-  final String source;
-  final String language;
-  final String relation;
-  final String coverage;
-  final String rights;
+  final String? title;
+  final String? description;
+  final String? creator;
+  final String? subject;
+  final String? publisher;
+  final String? contributor;
+  final String? date;
+  final String? type;
+  final String? format;
+  final String? identifier;
+  final String? source;
+  final String? language;
+  final String? relation;
+  final String? coverage;
+  final String? rights;
 
   DublinCore({
     this.title,
@@ -36,9 +36,9 @@ class DublinCore {
     this.rights,
   });
 
-  factory DublinCore.parse(XmlElement element) {
+  factory DublinCore.parse(XmlElement? element) {
     if (element == null) {
-      return null;
+      return DublinCore();
     }
     return DublinCore(
       title: findElementOrNull(element, "dc:title")?.text,

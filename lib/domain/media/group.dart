@@ -6,10 +6,10 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class Group {
-  final List<Content> contents;
-  final List<Credit> credits;
-  final Category category;
-  final Rating rating;
+  final List<Content>? contents;
+  final List<Credit>? credits;
+  final Category? category;
+  final Rating? rating;
 
   Group({
     this.contents,
@@ -18,21 +18,21 @@ class Group {
     this.rating,
   });
 
-  factory Group.parse(XmlElement element) {
+  static Group? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
     return new Group(
       contents: element.findElements("media:content").map((e) {
-        return new Content.parse(e);
+        return Content.parse(e);
       }).toList(),
       credits: element.findElements("media:credit").map((e) {
-        return new Credit.parse(e);
+        return Credit.parse(e);
       }).toList(),
-      category: new Category.parse(
+      category: Category.parse(
         findElementOrNull(element, "media:category"),
       ),
-      rating: new Rating.parse(
+      rating: Rating.parse(
         findElementOrNull(element, "media:rating"),
       ),
     );

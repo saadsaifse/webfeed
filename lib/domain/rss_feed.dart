@@ -16,32 +16,32 @@ import 'podcast_person.dart';
 import 'rss_itunes.dart';
 
 class RssFeed {
-  final String title;
-  final String author;
-  final String description;
-  final String link;
-  final List<RssItem> items;
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? link;
+  final List<RssItem>? items;
 
-  final RssImage image;
-  final RssCloud cloud;
-  final List<RssCategory> categories;
-  final List<String> skipDays;
-  final List<int> skipHours;
-  final String lastBuildDate;
-  final String language;
-  final String generator;
-  final String copyright;
-  final String docs;
-  final String managingEditor;
-  final String rating;
-  final String webMaster;
-  final int ttl;
-  final DublinCore dc;
-  final RssItunes itunes;
-  final List<PodcastFunding> podcastFunding;
-  final PodcastLocked podcastLocked;
-  final List<PodcastPerson> podcastPerson;
-  final PodcastLocation podcastLocation;
+  final RssImage? image;
+  final RssCloud? cloud;
+  final List<RssCategory>? categories;
+  final List<String>? skipDays;
+  final List<int>? skipHours;
+  final String? lastBuildDate;
+  final String? language;
+  final String? generator;
+  final String? copyright;
+  final String? docs;
+  final String? managingEditor;
+  final String? rating;
+  final String? webMaster;
+  final int? ttl;
+  final DublinCore? dc;
+  final RssItunes? itunes;
+  final List<PodcastFunding?>? podcastFunding;
+  final PodcastLocked? podcastLocked;
+  final List<PodcastPerson?>? podcastPerson;
+  final PodcastLocation? podcastLocation;
 
   RssFeed(
       {this.title,
@@ -117,13 +117,13 @@ class RssFeed {
         dc: DublinCore.parse(channelElement),
         itunes: RssItunes.parse(channelElement),
         podcastFunding:
-            findAllDirectElementsOrNull(channelElement, "podcast:funding")
+            findAllDirectElementsOrNull(channelElement, "podcast:funding")!
                 .map((element) => PodcastFunding.parse(element))
                 .toList(),
         podcastLocked: PodcastLocked.parse(
             findElementOrNull(channelElement, "podcast:locked")),
         podcastPerson:
-            findAllDirectElementsOrNull(channelElement, "podcast:person")
+            findAllDirectElementsOrNull(channelElement, "podcast:person")!
                 .map((element) => PodcastPerson.parse(element))
                 .toList(),
         podcastLocation: PodcastLocation.parse(

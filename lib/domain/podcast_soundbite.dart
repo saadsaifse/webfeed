@@ -7,12 +7,12 @@ class PodcastSoundbite{
 
   PodcastSoundbite(this.startTime, this.duration, this.info);
 
-  factory PodcastSoundbite.parse(XmlElement element){
+  static PodcastSoundbite? parse(XmlElement? element){
       if (element == null) {
       return null;
     }
-    var startTime = double.parse(element.getAttribute("startTime"));
-    var duration = double.parse(element.getAttribute("duration"));
+    var startTime = double.parse(element.getAttribute("startTime")!);
+    var duration = double.parse(element.getAttribute("duration")!);
     var info = element.text ?? "";
 
     return PodcastSoundbite(startTime, duration, info);

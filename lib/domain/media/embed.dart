@@ -2,10 +2,10 @@ import 'package:webfeed/domain/media/param.dart';
 import 'package:xml/xml.dart';
 
 class Embed {
-  final String url;
-  final int width;
-  final int height;
-  final List<Param> params;
+  final String? url;
+  final int? width;
+  final int? height;
+  final List<Param?>? params;
 
   Embed({
     this.url,
@@ -14,7 +14,7 @@ class Embed {
     this.params,
   });
 
-  factory Embed.parse(XmlElement element) {
+  static Embed? parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
@@ -23,7 +23,7 @@ class Embed {
       width: int.tryParse(element.getAttribute("width") ?? "0"),
       height: int.tryParse(element.getAttribute("height") ?? "0"),
       params: element.findElements("media:param").map((e) {
-        return new Param.parse(e);
+        return Param.parse(e);
       }).toList(),
     );
   }
