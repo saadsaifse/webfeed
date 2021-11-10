@@ -11,7 +11,7 @@ class PodcastFunding {
       return null;
     }
     var url = element.getAttribute("url")?.trim() ?? "";
-    var info = element.text?.trim() ?? "";
+    var info = element.text.trim();
 
     return PodcastFunding(info, url);
   }

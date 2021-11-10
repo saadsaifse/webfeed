@@ -18,7 +18,7 @@ class RssItunesCategory {
     return RssItunesCategory(
       category: element.getAttribute("text")?.trim(),
       subCategories:
-          subCategories?.map((ele) => ele.getAttribute("text")?.trim())?.toList(),
+          subCategories?.map((ele) => ele.getAttribute("text")?.trim()).toList(),
     );
   }
 }

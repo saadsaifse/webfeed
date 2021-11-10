@@ -13,7 +13,7 @@ class PodcastSoundbite{
     }
     var startTime = double.parse(element.getAttribute("startTime")!);
     var duration = double.parse(element.getAttribute("duration")!);
-    var info = element.text ?? "";
+    var info = element.text;
 
     return PodcastSoundbite(startTime, duration, info);
   }

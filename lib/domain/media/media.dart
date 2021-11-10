@@ -124,24 +124,24 @@ class Media {
       ),
       comments: findElementOrNull(element, "media:comments")
               ?.findElements("media:comment")
-              ?.map((e) {
+              .map((e) {
             return e.text;
-          })?.toList() ??
+          }).toList() ??
           [],
       embed: Embed.parse(
         findElementOrNull(element, "media:embed"),
       ),
       responses: findElementOrNull(element, "media:responses")
               ?.findElements("media:response")
-              ?.map((e) {
+              .map((e) {
             return e.text;
-          })?.toList() ??
+          }).toList() ??
           [],
       backLinks: findElementOrNull(element, "media:backLinks")
               ?.findElements("media:backLink")
-              ?.map((e) {
+              .map((e) {
             return e.text;
-          })?.toList() ??
+          }).toList() ??
           [],
       status: Status.parse(
         findElementOrNull(element, "media:status"),
@@ -160,9 +160,9 @@ class Media {
       ),
       scenes: findElementOrNull(element, "media:scenes")
               ?.findElements("media:scene")
-              ?.map((e) {
+              .map((e) {
             return Scene.parse(e);
-          })?.toList() ??
+          }).toList() ??
           [],
     );
   }
